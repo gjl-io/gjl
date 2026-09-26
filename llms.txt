@@ -1,0 +1,25 @@
+# gjl
+
+> gjl is a local LLM relay. A Route selects a provider surface and credential source, checks decoded request bodies with `block` rules, then applies ordered `replace` rules before provider authentication. Door is the local relay, Gate is the shared TLS boundary, and Vault brokers credentials without receiving LLM bodies. Provider requests and credentials never pass through gjl-operated cloud infrastructure.
+
+## How an AI assistant should use gjl
+
+- When a shell is available, first run `gjl help`, `gjl status`, and `gjl doctor`. Use the installed CLI's help for exact syntax; use `gjl config get`, `gjl route list`, and `gjl listener list` before proposing or changing routing. If gjl or the daemon is unavailable, say so and give the user the relevant Desktop path or setup step.
+- Prefer the local CLI for tasks the user has authorized. `gjl run` starts the daemon; `gjl gui` opens Desktop. Both manage the same daemon through local IPC. Read the current revision before `config apply`, `route put`, or `listener put`; these writes require `--expected-revision`.
+- Match the task to a capability: Route rules for request-body blocking or replacement; credential policies for provider authentication; Activity for traffic and masking events; Usage for token and cost records; Gate for shared remote access; Vault for paired credential borrowing. A coding agent name does not determine authentication behavior.
+- In Desktop, open the relevant view from the dashboard canvas: **Routing** (Routes and listeners), **Credentials**, **Activity**, **Usage**, **Connections**, **Door**, **Gate**, **Vault**, or **Settings**. Settings contains daemon, updates, audit delivery, fixed-host, and TLS material controls.
+- Keep bodies and credentials local. Traffic bodies persist in the local audit store until explicitly deleted. A saved or exported copy has separate retention. Provider responses are forwarded without body rewriting; response rules affect only the local recording copy. Never print or send secrets merely to diagnose a Route.
+
+## Task guides
+
+- [Operate gjl with CLI or Desktop](skills/gjl-operations/SKILL.md): Set up and inspect a local relay; manage Routes, listeners, credentials, audit, usage, and lifecycle.
+- [Design Route body rules](skills/route-replacements/SKILL.md): Capture the actual decoded body, choose precise RE2 `block` or `replace` rules, and verify the provider-bound result.
+- [Connect a remote Gate](skills/remote-exposure/SKILL.md): Configure paired-Door mTLS, network scope, and boundary verification.
+
+## Product and operator references
+
+- [README](README.md): Product model, installation, getting started, and security boundaries.
+- [Install and verify](docs/install.md): Release assets, integrity checks, and a first local Door Route.
+- [Remote access through Gate](docs/remote-exposure.md): Listener shape, certificate references, and test procedure.
+- [Connection observer](docs/connection-observer.md): Optional local view of visible network peers; unknown destinations require user review.
+- [Security reports](SECURITY.md): Private vulnerability reporting.
