@@ -23,7 +23,7 @@ For this mode:
 
 HTTP/HTTPS endpoints terminate TLS in ngrok. Traffic Policy can authenticate requests with OAuth, OIDC, mutual TLS, IP restrictions, or JWT validation, but this is an ngrok boundary rather than gjl paired-Door mTLS.
 
-For non-browser LLM clients, prefer JWT validation in a dedicated header such as `X-GJL-Tunnel-Authorization` when the client can supply it. Configure an exact issuer, audience, allowed signing algorithms, and JWKS source. Run `jwt-validation` before forwarding and then use `remove-headers` to delete the ingress credential. Do not consume the provider `Authorization` header for tunnel authentication.
+For non-browser LLM clients, prefer JWT validation in a dedicated header such as `X-Gjl-Tunnel-Authorization` when the client can supply it. Configure an exact issuer, audience, allowed signing algorithms, and JWKS source. Run `jwt-validation` before forwarding and then use `remove-headers` to delete the ingress credential. Do not consume the provider `Authorization` header for tunnel authentication.
 
 Forward authenticated traffic through a loopback sanitizing proxy to Door, or to a deliberately agentless Gate. If the deployment must keep bodies opaque to the ngrok cloud, use an unterminated TCP/TLS endpoint and perform authentication at a local TLS proxy; edge HTTP actions require ngrok to process plaintext HTTP.
 

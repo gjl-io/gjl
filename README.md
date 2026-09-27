@@ -369,6 +369,16 @@ python -m pip install -r tools/requirements.txt
 python tools/observe_connections.py --duration 600
 ```
 
+Run the public repository checks with:
+
+```sh
+python -m pip install -r tools/requirements.txt
+python -m unittest discover -s tools -p 'test_*.py' -v
+```
+
+The test suite also prevents internal implementation terminology from entering
+tracked public files.
+
 ## Repository contents
 
 This repository is the public distribution home for gjl. It contains:
