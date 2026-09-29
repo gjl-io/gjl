@@ -68,9 +68,10 @@ Do not run the file if its checksum differs.
   app with its bundled CLI. The standalone `gjl-darwin-ARCH` is for CLI and
   headless use.
 
-Run `gjl version`, `gjl release-info`, and `gjl --help` with the installed or
-extracted CLI. For standalone downloads, invoke the downloaded filename or
-rename it to `gjl` (to `gjl.exe` on Windows). The daemon is a separate process
+Run `gjl --version` (or `gjl -v`) for a one-line `gjl VERSION`. Run `gjl version`
+for detailed JSON metadata, `gjl release-info` for release metadata, and
+`gjl --help` for help. For standalone downloads, invoke the downloaded filename
+or rename it to `gjl` (to `gjl.exe` on Windows). The daemon is a separate process
 started with `gjl run`; Desktop and CLI manage it over owner-protected local
 IPC. A display is not required for CLI/daemon operation.
 
