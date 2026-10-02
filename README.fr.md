@@ -276,3 +276,7 @@ gjl est conçu selon les principes d'autonomie locale et de pleine maîtrise par
 - Aucune installation ou rétrogradation automatique de mise à jour.
 
 Les seules interactions réseau côté éditeur consistent en une consultation non authentifiée des étiquettes publiques GitHub, au téléchargement des composants officiels de la version lorsque l'utilisateur exécute explicitement `gjl update`, et à l'ouverture de la page publique des versions depuis l'interface graphique Desktop à la demande.
+
+## Enregistrements du trafic local
+
+Desktop Activity et `gjl audit headers --event-id ID` affichent les en-têtes HTTP reçus et transmis, avec les valeurs d’authentification, de clés API et de cookies masquées. Les en-têtes WebSocket décrivent la négociation de la connexion. Les enregistrements de production existants restent lisibles ; les anciennes entrées peuvent ne pas avoir d’en-têtes. Consultez le [guide d’inspection du trafic local](docs/traffic-records.md).

@@ -276,3 +276,7 @@ gjl 始终遵循本地优先与操作者全权掌控原则：
 - 绝不自动下载、安装或回滚更新。
 
 唯一存在的厂商端网络交互仅限于对公开 GitHub Tag 的免认证读取、在用户明确执行 `gjl update` 时下载官方发布文件，以及在用户明确要求时通过 Desktop GUI 在浏览器中打开公开 Release 页面。
+
+## 本地流量记录
+
+Desktop 活动界面和 `gjl audit headers --event-id ID` 可显示接收和转发的 HTTP 标头，认证令牌、API 密钥和 Cookie 值均已遮蔽。WebSocket 记录显示连接握手标头。现有生产记录仍可读取，旧记录可能没有标头。请参阅[本地流量查询指南](docs/traffic-records.md)。

@@ -276,3 +276,7 @@ gjl basiert auf dem Prinzip lokaler und betreibergeführter Autorität:
 - Keine automatische Installation oder Rollback von Updates.
 
 Die einzigen netzwerkseitigen Anbieterinteraktionen bestehen im unauthentifizierten Auslesen öffentlicher GitHub-Tags, dem Herunterladen offizieller Release-Assets bei expliziter Ausführung von `gjl update` durch den Benutzer und dem Öffnen der öffentlichen Release-Seite über die Desktop-GUI auf Anforderung.
+
+## Lokale Verkehrsaufzeichnungen
+
+Desktop Activity und `gjl audit headers --event-id ID` zeigen empfangene und weitergeleitete HTTP-Header mit maskierten Authentifizierungs-, API-Schlüssel- und Cookie-Werten. WebSocket-Header beziehen sich auf den Verbindungs-Handshake. Vorhandene Produktionsaufzeichnungen bleiben lesbar; ältere Einträge können ohne Header vorliegen. Siehe die [Anleitung zur lokalen Verkehrsprüfung](docs/traffic-records.md).

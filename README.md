@@ -431,3 +431,7 @@ gjl is designed around local and operator-owned authority:
 The only vendor-side network interactions are unauthenticated reads of public
 GitHub tags, downloading official release assets when the user explicitly runs
 `gjl update`, and opening the public release page from the Desktop GUI when requested.
+
+## Local traffic records
+
+Desktop Activity and `gjl audit headers --event-id ID` show received and forwarded HTTP headers with authentication/API-key/cookie values masked. WebSocket headers describe the connection handshake. Existing production records remain readable; older entries may have no headers. See the [local traffic inspection guide](docs/traffic-records.md).

@@ -276,3 +276,7 @@ gjl 始終堅持本機優先與操作者完全自主原則：
 - 絕不自動下載、安裝或復原更新。
 
 唯一存在的廠商端網路互動僅限於對公開 GitHub 標籤的免驗證讀取、在使用者明確執行 `gjl update` 時下載官方發布檔案，以及在使用者明確要求時透過 Desktop GUI 在瀏覽器中開啟公開發布頁面。
+
+## 本機流量記錄
+
+Desktop 活動畫面和 `gjl audit headers --event-id ID` 可顯示接收及轉送的 HTTP 標頭，驗證權杖、API 金鑰與 Cookie 值均已遮蔽。WebSocket 記錄顯示連線握手標頭。現有正式環境記錄仍可讀取，舊記錄可能沒有標頭。請參閱[本機流量查詢指南](docs/traffic-records.md)。

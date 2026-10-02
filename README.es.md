@@ -276,3 +276,7 @@ gjl está diseñado en torno al principio de autoridad local y soberanía del op
 - Sin instalación ni reversión automática de actualizaciones.
 
 Las únicas interacciones de red del lado del proveedor son lecturas sin autenticación de las etiquetas públicas de GitHub, la descarga de recursos oficiales de la versión cuando el usuario ejecuta explícitamente `gjl update` y la apertura de la página pública de versiones desde la GUI de Desktop cuando se solicita.
+
+## Registros de tráfico local
+
+Desktop Activity y `gjl audit headers --event-id ID` muestran las cabeceras HTTP recibidas y reenviadas con los valores de autenticación, claves API y cookies ocultos. Las cabeceras WebSocket describen la negociación de la conexión. Los registros de producción existentes siguen siendo legibles; las entradas antiguas pueden no tener cabeceras. Consulte la [guía de consulta de tráfico local](docs/traffic-records.md).
