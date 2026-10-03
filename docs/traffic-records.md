@@ -34,3 +34,20 @@ deduplicated across identical handshake snapshots. Delete records through
 Desktop or `gjl audit delete` so their headers are removed too. Saved exports
 and body files have separate retention. Header references left after record
 deletion by an older daemon are reconciled when the new daemon starts.
+
+Desktop Settings → Storage shows disk space, database/WAL/SHM sizes, and unused
+space. Records can move to another local drive on the next daemon start; the
+original location remains active if transfer fails. Configuration and credentials
+stay in place. Select individual records or several records in Activity or Usage
+to delete them. The **Delete** button removes all matching filter results, while
+**Delete all** is available in global views. Deletion and disk-space reclamation
+are separate actions; reclamation reports measured bytes and includes headers.
+
+```console
+gjl storage status
+gjl storage configure --expected-revision N --directory ABSOLUTE_FOLDER --confirm
+gjl audit delete --event-ids EVENT_ID --confirm
+gjl audit compact
+gjl usage delete --sequences SEQUENCE --confirm
+gjl usage compact
+```
