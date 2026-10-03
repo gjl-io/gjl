@@ -23,17 +23,18 @@ gjl audit body-read --event-id EVENT_ID --direction request --message-index 0
 Use the `next_cursor` and the same filters/order for another metadata page.
 `audit body-save` saves a complete body when needed. `audit export` exports
 metadata only, excluding bodies and headers. Remote audit also receives metadata
-only. Older recorded events may have no headers; this does not mean their bodies
-are empty. An older daemon without the new local header endpoint still supports
+only. An absent header recording does not mean a body is empty.
+An older daemon without the local header endpoint still supports
 existing body reads.
 
 Local SQLite files have owner-only permissions and no automatic expiration.
-The strict production `audit.db` schema and IPC v1 responses are preserved;
-masked headers live in the adjacent `audit-headers.db`, linked by event ID and
-deduplicated across identical handshake snapshots. Delete records through
-Desktop or `gjl audit delete` so their headers are removed too. Saved exports
-and body files have separate retention. Header references left after record
-deletion by an older daemon are reconciled when the new daemon starts.
+Events, bodies, and masked headers share `audit.db`, with identical handshake
+snapshots deduplicated. Delete records through Desktop or `gjl audit delete` to
+remove their bodies and headers together. Saved exports and body files have
+separate retention. On first open, the deployed events/bodies-only audit database
+is reset: previous activity and recorded bodies are discarded without migration.
+New records survive subsequent starts. The audit filename and IPC v1 remain
+unchanged; usage history in `usage.db` is preserved.
 
 Desktop Settings → Storage shows disk space, database/WAL/SHM sizes, and unused
 space. Records can move to another local drive on the next daemon start; the
